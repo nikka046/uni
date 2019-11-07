@@ -13,6 +13,7 @@ This repository contains my notes, labs and coursework.
 ## Scripts
 
 To use the scripts, add the `uni/scripts` folder to your `$PATH` variable. Then, you can use the following commands:
+
 | Command | Description |
 | ------- | ----------- |
 | `uni notes {{module_id}}` | Opens the _secure.ecs_ notes page for `module_id`. |
