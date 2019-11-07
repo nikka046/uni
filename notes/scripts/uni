@@ -1,0 +1,7 @@
+#!/bin/fish
+
+if  [ $argv[1] = "notes" ]
+	firefox "secure.ecs.soton.ac.uk/notes/$argv[2]"
+else
+	echo "operation '$argv[1]' not found"
+end

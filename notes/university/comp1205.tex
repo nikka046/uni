@@ -1,0 +1,41 @@
+\documentclass{article}
+
+\usepackage{bookmark}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{lineno,hyperref}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{float}
+\usepackage{stmaryrd}
+\usepackage{bussproofs}
+
+\theoremstyle{definition}
+\newtheorem{df}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{thr}{Theorem}
+\newtheorem{pr}{Proposition}
+
+\newcommand{\incfig}[1]{%
+  \def\svgwidth{\columnwidth}
+  \import{./figures/}{#1.pdf_tex}
+}
+
+\begin{document}
+  \title{COMP1205}
+  \author{Dominik Tarnowski}
+  \date{October 2019}
+  \maketitle
+
+  \tableofcontents
+
+  
+  \subsection{}
+
+  \end{document}
+

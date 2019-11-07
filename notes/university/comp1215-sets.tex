@@ -1,0 +1,399 @@
+\documentclass{article}
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[table]{xcolor}
+\usepackage{lineno,hyperref}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{float}
+
+\theoremstyle{definition}
+\newtheorem{df}{Definition}[section]
+\newtheorem{ex}{Example}[section]
+\newtheorem{thr}{Theorem}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+
+
+\begin{document}
+
+\title{COMP1215 - Sets}
+\author{Dominik Tarnowski}
+\date{October 2019}
+\maketitle
+
+\tableofcontents
+
+\section{What is a set?}
+
+
+\begin{df}{Set}
+	An \textbf{unordered} collection of \textbf{objects} with \textbf{no duplicates}.
+\end{df}
+
+\subsection{Defining a set}
+To Define a set, we use the following syntax:
+\[ Let\ X = \{1,2,3\} \]
+This defines a set called X with elements 0, 2 and 3.\\
+
+\subsection{Properties of a set}
+Note, that a set \textbf{doesn't specify the order}, so:
+\[ X = \{ 3,1,2 \}\]
+The set also \textbf{doesn't have duplicates}, so they can be simply ignored:
+\[ Let\ Y = \{apple, apple, 1,2,2,3,3, pi, \{3.12\}\} \]
+\[ \therefore Y = \{apple, 1,2,3,pi,\{3.12\}\]
+Notice how I used different types of data types in the above example. This is because a set is a collection of \textbf{objects}, therefore it can include anything.
+
+\subsection{Cardinality}
+For finite sets, the cardinality of a set is simply its size:
+\begin{ex}
+	\[Let\ X = \{1,2,3,5\} \]
+	\[|X| = 4\]
+\end{ex}
+
+\subsection{Membership}
+Given a set:
+\[ Let\ X = \{...\} \]
+If an element x is included within X:
+\[x \in X\]
+If it is not included:
+\[x \notin X\]
+
+\begin{ex}
+	\[ Let\ X = \{1,2,3,4\}\]
+	\[ 1 \in X\]
+	\[0 \notin X\]
+\end{ex}
+
+\subsection{Subsets}
+\begin{df}{Subset}
+	A set A is a subset of set B if all elements of A are included within B.
+\end{df}
+
+To explain, given a set:
+\[Let\ B = \{...\}\]
+If another set A is a subset of B:
+\[A \subseteq B\]
+This also means that $B$ is a superset of A, which is just another way of writing it:
+\[B \supseteq A\]
+
+\begin{ex}
+\[Let\ X = \{1,2,3\}\]
+\[\{1\} \subseteq X\]
+\[\{1,3\} \subseteq X\]
+\[\{1,3,4\} \not\subseteq X\]
+\end{ex}
+
+\subsection{Proper subset}
+A proper subset works exactly the same as a subset, except for it \textbf{cannot contain all elements of the superset}. \\
+\\
+If set A is a proper subset of B:
+\[A \subset B\]
+
+\begin{ex}
+	\[Let\ X = \{1,2,3\}\]
+	\[\{1,2\} \subset X\]
+	\[\{1,2,3\} \not\subset X\]
+\end{ex}
+
+\subsection{Existing sets}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Symbol & Name & Description \\
+		\hline
+		$\mathbb{R}$ & Real & any real number \\
+		$\mathbb{N}$ & Natural & integer $> 0$ \\
+		$\mathbb{Z}$ & Integer & whole number\\
+		2 & Binary Set & $2 = \{0,1\}$ \\
+		\hline
+	\end{tabular}
+\end{table}
+\section{Ordered Pairs}
+Unline sets, ordered pairs can only contain two elements and their order matters. \\
+\[(1,0) \neq (0,1)\]
+
+\begin{ex}
+	\[Let\ X = \{(0,1), (1,1)\}\]
+	Note that ordered pairs can also contain duplicates.
+\end{ex}
+
+\section{Set Operations}
+\begin{df}{Set Operation}
+	Takes two sets and returns a single set.
+\end{df}
+
+\subsection{Union: $A \cup B$}
+\begin{figure}[H]
+    \centering
+    \incfig{union}
+\end{figure}
+
+\subsection{Intersection: $A \cap B$}
+\begin{figure}[H]
+    \centering
+    \incfig{intersection}
+\end{figure}
+
+\subsection{Difference: $A - B$}
+\begin{figure}[H]
+    \centering
+    \incfig{difference}
+\end{figure}
+
+
+
+
+\subsection{Cartesian Product: $A \times B$}
+Gives a 2D matrix representation of two sets, using a set of pairs.
+\[A \times B = \{(a,b) \mid a \in A\ and\ b \in B\}\]
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c | c c c c}
+		$$ & $b_1$ & $b_2$ & ... & $b_m$ \\
+		\hline
+		$a_1$ & $(a_1, b_1)$ & $(a_1, b_2)$ & ... & $(a_1, b_m)$ \\
+		$a_2$ & $(a_2, b_1)$ & $(a_2, b_2)$ & ... & $(a_2, b_m)$ \\
+		... & ... & ... & ... & ... \\
+		$a_n$ & $(a_n, b_1)$ & $(a_n, b_2)$ & ... & $(a_n, b_m)$ \\
+	\end{tabular}
+\end{table}
+
+\begin{ex}
+	\[Let\ A = \{a,b\}\]
+	\[Let\ B = \{1,2,3\}\]
+	\[\therefore A \times B = \{(a,1), (a, 2), (a,3), (b,1), (b,2), (b,3)\}\]
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c | c c c }
+		$$ & 1 & 2 & 3\\
+		\hline
+		a & (a,1) & (a,2) & (a,3) \\
+		b & (b,1) & (b,2) & (b,3)
+	\end{tabular}
+	\end{table}
+\end{ex}
+
+
+\subsection{Sum / Disjoint Union: $A + B$}
+Disjoint union takes two sets, A and B and unions them such that all elements from both sets are included:
+\[X + Y = \{(x,0) \mid x \in X\} \cup \{(y,1) \mid y \in Y\}\]
+
+\begin{ex}
+	\[Let\ X = \{1,2,3\}\]
+	\[Let\ Y = \{2,3,4\}\]
+	Notice that the union skips the duplicates:\[X\cup Y = \{1,2,3,4\}\] However the disjoint union keeps them: \[X + Y = \{(1,0), (2,0), (3,0), (2,1), (3,1), (4,1)\}\]
+\end{ex}
+
+\section{Relations}
+A relation from set X to set Y is \textbf{some set} of \textbf{pairs from their cartesian product}, so:
+\[R \subseteq X \times Y\]
+
+\subsection{Number of relations}
+The number of relations is simply the number of subsets in the cartesian product. \\
+The number of items in the cartesian product of sets X and Y is $|X| \times |Y|$. \\
+So the number of relations must be:
+\[2^{|X|\times |Y|}\]
+
+
+\subsection{Identity Relation: $I_X$}
+An identity relation is an example of a relation that maps a value of a set to the same value.\\
+We use the notation $I_X$ where X is the set that the relation is on.
+\begin{ex}
+	\[Let\ X = \{1,2,3\}\]
+	\[\therefore I_X: X \rightarrow X\ (more\ on\ this\ syntax\ later)\]
+	\[\therefore I_X = \{(1,1), (2,2), (3,3)\}\]
+\end{ex}
+
+If you imagine the cartesian product as a 2D table matrix, then the identity relation is simply the diagonal: 
+\begin{table}[h!]
+\centering
+\begin{tabular}{c | c c c c}
+	$$ & $x_1$ & $x_2$ & ... & $x_m$ \\
+	\hline
+	$x_1$ & \cellcolor[HTML]{ffe2e0} $(x_1, x_1)$ & $(x_1, x_2)$ & ... & $(x_1, x_m)$ \\
+	$x_2$ & $(x_2, x_1)$ & \cellcolor[HTML]{ffe2e0} $(x_2, x_2)$ & ... & $(x_2, x_m)$ \\
+	... & ... & ... & \cellcolor[HTML]{ffe2e0} ... & ... \\
+	$x_n$ & $(x_n, x_1)$ & $(x_n, x_2)$ & ... & \cellcolor[HTML]{ffe2e0}$(x_n, x_m)$ \\
+\end{tabular}
+\end{table}
+
+\subsection{Equivalence relations}
+An equivalence relation is a special relation that satisfies the following conditions:
+\begin{enumerate}
+	\item \textbf{reflexivity}: $\forall x \in X, (x,x) \in \sim $
+	\item \textbf{symmetry}: $\forall x,y \in X, if\ (x,y)\ \in\ \sim\ then\ (y,x) \in\ \sim$
+	\item \textbf{transitivity}: $x,y,z \in X,\ for\ (x,y) \in\ \sim\ and\ (y,z)\ then\ (x,z) \in\ \sim$
+\end{enumerate}
+
+\begin{ex}
+	\[Let\ A = \{1,2,3\}\]
+	Then a valid equivalence relation, $R$, can defined as follows: \\
+	\[	\{ (1,1), \\
+		(2,2),\\
+		(3,3),\\
+		(1,3),\\
+		(3,1)\\
+	\}
+\]
+	Of course, there are many other equivalence relations that can be defined, as long as they follow the given 3 rules.
+\end{ex}
+
+\subsubsection{Equivalence classes}
+An equivalence class i a set of elements a given element is equivalent to. \\
+Given a set X and element a such that $a \in X$:
+\[ [a] = \{ x \mid x \in X\ and\ (x,a) \in\ \sim \}\]
+
+\begin{ex}
+	\[Let\ X = \{1,2,3\}\]
+	\[Let\ \sim\ = \{ (1,1), (2,2), (3,3), (1,3), (3,1) \}\]
+	\[\therefore [1] = \{1,3\}, [2] = \{2\}, [3] = \{3,1\}\]
+\end{ex}
+
+\subsubsection{Quotients}
+\begin{df}{Quotient}
+	The set of equivalence classes for each element in the given set.
+\end{df}
+A quotient of X with respect to ~ is usually denoted as:
+\[X/\sim\ = \{[x] \mid x \in X\}\]
+
+\subsection{Functions as relations}
+A function (function graph to be specific, but we will cover that later) is simply a relation (called \textbf{f}) that satisfies the following conditions:
+\begin{enumerate}
+	\item $\forall x \in X$, there exists $y \in Y$ such that $(x,y) \in f$
+	\item if $(x,y) \in f$ and $(x,z) \in f$ then $y=z$
+\end{enumerate}
+The following points can be easily simplied:
+\begin{enumerate}
+	\item function is defined on the entire domain
+	\item function can only have 1 output for a given input
+\end{enumerate}
+
+\section{Functions}
+A function maps from one set of values to a different set. The same x-value in a set cannot map to two different y-values, but two x-values can map to the same y-value.
+
+\begin{figure}[H]
+	\centering
+	\incfig{func}
+\end{figure}
+
+\subsection{Range vs Codomain}
+\begin{df}{Range.}
+	All of Y values that are mapped to by X.
+\end{df}
+This can also be written as follows:
+\[ \{f(x) \mid x \in X\} \]
+
+\subsection{Declaring functions}
+In discrete mathematics, a funciton can only have 1 input and 1 output.\\
+\begin{ex}
+Let's see an example of a function declaration.\\
+A function called \textbf{f} that takes any integer, multiplies it by two and returns it would be defined as such:
+\[f: \mathbb{Z} \rightarrow \mathbb{Z} \]
+\[f(x) = x \times 2\]
+We need to define what set the domain and codomain are before we write the equation for the function.\\
+\end{ex}
+\begin{ex}
+A function that takes more than 1 input, for example a function \textbf{g} that multiplies two real numbers together would have to take a pair from the cartesian product of the two real sets:
+
+\[g: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}\]
+\[g(a,b) = a \times b\]
+
+And if a function took more than two arguments, it would look somewhat like this:
+\[h: (\mathbb{R} \times \mathbb{R}) \times \mathbb{R} \rightarrow \mathbb{R}\]
+\[h(a,b,c) = a \times b + c\]
+Note, that $h(a,b,c)$ is just a nicer way of writing $h((a,b), c)$ and this is actually what is happening under the hood.
+\end{ex}
+
+\subsection{Number of functions between two sets}
+
+\subsection{Composing functions}
+\begin{df}{Composition.}
+	Taking output from one function and feeding it to another one
+\end{df}
+\[g(f(x)) = (f;g)(x) = (f \circ g)(x)\]
+\subsection{Injective, surjective and bijective}
+Functions can have their own properties. For example, a function can be injective, surjective, or both.
+
+\subsubsection{Injective}
+In an injective function, no 2 of the same X values give the same Y value.
+\[\forall x,x' \in X,\ if\ f(x)=f(x')\ then\ x=x'\]
+
+\subsubsection{Surjective}
+In a surjective function, all of the codomain is being mapped to by the function.\\
+This means that \textbf{range = codomain}.
+\[let\ f: X \rightarrow Y\]
+\[ \forall y \in Y,\ there\ exists\ x \in X\ such\ that\ f(x)=y\]
+
+\subsubsection{Bijective}
+A function is bijective if it's both injective and surjective.\\
+This is also known as \textbf{1-1 correspondence}.
+
+\subsection{Isomorphism theorem}
+\begin{thr}
+	All bijective functions have an inverse.
+\end{thr}
+\subsection{Graph of a function}
+\begin{df}{function graph}
+	Set of ordered pairs relating the inputs to the outputs of the function.
+\end{df}
+
+Given a graph, $F = \{(0,0), (1,0), (2,1), (3, 3)\}$, we can represent it with a diagraph:
+\begin{figure}[H]
+	\centering
+	\incfig{diagraph}
+\end{figure}
+\subsection{Function spaces}
+\begin{df}{function space.}
+	A set of functions.
+\end{df}
+
+Given sets X and Y, the set of all functions from X to Y is defined by:
+\[Y^X\]
+This allows us to define functions like this one:
+\[f: X \times Y^X \rightarrow Y\]
+\[f(x,g) = g(x+4)\]
+
+\section{Powersets}
+\begin{df}{Powerset of X.}
+	Set of all subsets of X.
+\end{df}
+Given a set X, we define the powerset with the following:
+\[ P(X) \]
+\begin{ex}
+	\[P(\{0,1\}) = \{\emptyset, \{0\}, \{1\}, \{0, 1\}  \}\]
+	The subset $\{1,0\}$ is the same as $\{0,1\}$, therefore it's not included.
+\end{ex}
+\begin{ex}
+	\[P(\emptyset) = \{\emptyset\}\]
+\end{ex}
+\begin{ex}
+	\[PP(\emptyset) = \{\emptyset, \{\emptyset\}\}\]
+\end{ex}
+\subsection{Cardinality of powersets}
+The number of subsets of set X is given by:
+\[2^{|X|}\]
+
+\subsection{Partitions}
+Given a set X and subsets $X_0, X_1, ..., X_n$, if:
+\[X_0 \cup X_1 \cup ... \cup X_n = X\]
+Then the given set of subsets is called a partition.
+
+\begin{thr}
+If ~ is an equivalence relation on X, then $X/\sim$ is a partition of X.
+\end{thr}
+
+
+\end{document}
