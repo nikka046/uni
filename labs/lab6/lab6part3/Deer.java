@@ -1,3 +1,4 @@
+// Deer is a Herbivore
 class Deer extends Herbivore {
   // Deer constructor
   public Deer(String name, Integer age) {
