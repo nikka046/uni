@@ -33,6 +33,9 @@
 }
 
 \newcommand\y{\cellcolor{green!10}}
+\newcommand\green{\cellcolor{green!20}}
+\newcommand\red{\cellcolor{red!20}}
+\newcommand\blue{\cellcolor{blue!20}}
 
 \begin{document}
   \title{COMP1215 - Linear Algebra}
@@ -260,12 +263,14 @@
   \end{ex}
 
   \subsection{Row interchange}
-  Rows can also be interchanged by multiplying them by a 2D vector consisting of 1s and 0s as such:
+  To interchange (swap) row $i$ with row $j$, we write:
+  \[\rho_i \leftrightarrow \rho_j \]
 
+  Rows can also be interchanged by multiplying them by a 2D vector consisting of 1s and 0s as such:
   \begin{ex}
     To interchange row 2 and row 5:
     \begin{equation}
-      p_2 p_5 =   \begin{bmatrix}
+      p_2 \leftrightarrow p_5 =   \begin{bmatrix}
         1 & 0 & 0 & 0 & 0 & 0 \\
         0 & 0 & 0 & 0 & 1 & 0 \\
         0 & 0 & 1 & 0 & 0 & 0 \\
@@ -362,6 +367,7 @@
     \end{bmatrix}
     \]
   \end{ex}
+  A set of vectors is \textbf{linearly independent} iff none of the vectors in the set can be expressed as a sum of scalars of the others.
   \subsection{Spans in 3 dimensions}
   Spans in 3 dimensions work in the exact same way given that only 2 vectors are given in $V$. The span simply creates a 2D place in the 3D space which defines the span. \\
   Adding a 3rd vector that is not within the span of the other 2, will allow for any point in the 3 dimensional space to be within the span. \\
@@ -406,10 +412,42 @@
     0 & 1 & \frac{1}{5} & \frac{24}{5} \\
     0 & 0 & 1 & \frac{11}{4} \\
   \end{amatrix} \]
+  \subsection{Echelon form}
   The form above is called \textbf{echelon form}. In order for an augmented matrix to be in echelon form, it needs to satisfy the following rules:
   \begin{enumerate}
     \item All leading entries in each row are equal to 1
     \item If a column contains a leading entry, then all entries below have to equal 0
     \item In any 2 consecutive non-zero entries, the leading entry in the upper row occurs to the left of the leading entry in the lower row.
   \end{enumerate}
+  \begin{ex}
+    Here is another example of a valid echelon form:
+  \[
+   \begin{bmatrix}
+     \green 1 & 0 & 0 & 4 \\
+     0 & 0 & \green 1 & 2 \\
+     0 & 0 & 0 & \green 1 \\
+   \end{bmatrix} 
+  \]
+\end{ex}
+
+\begin{ex}
+  Sometimes, an equation might not have a solution. Take $3x_1+2x_2=1$ as an example.
+  This is the equivalent of the above equation in row echelon form:
+  \[
+    \begin{amatrix}{2}
+      1 & \frac{2}{3} & \frac{1}{3} \\
+      0 & 0 & 0 \\
+    \end{amatrix}
+  \]
+  Which brings us to the following conclusion
+\end{ex}
+\begin{center}
+  In row echelon form, \\
+  if there exists at least one row full of 0s \\
+  there are \textbf{infinitely many solutions}
+\end{center}
+  
+  In order to obtain a solution in row echelon form, each row has to have a pivot (non zero leading value).
+  
+  
   \end{document}
