@@ -48,14 +48,74 @@
   \begin{ex}
     \[A = \{x \mid x \in \mathbb{Z}\ and\ |x| \leq 5\}\]
     \[B = \{x \mid x \in \mathbb{N}\ and\ x \leq 5\}\]
-    As you can see, $|A|<|B|$, so all valid functions between $A$ and $B$ must map at least one pair of $x$ values to the same $y$ value.
+    As you can see, $|A|>|B|$, so all valid functions between $A$ and $B$ must map at least one pair of $x$ values to the same $y$ value.
     \[f: A \to B\]
     \[f(x) = x^2\]
     \[f(-5) = 25\]
     \[f(5) = 25\]
   \end{ex}
 
+  \begin{ex}
+    \textbf{A human has a maximum of approx 200,000 hairs on his head. Prove that at least 2 people in London have exactly the same number of hairs on their head.}
+    \[Let\ A = \{x \mid x \in \mathbb{N}\ and\ x \leq 8.9 \times 10^6\}\]
+    \[Let\ B = \{x \mid x \in \mathbb{N}\ and\ x \leq 200,000\}\]
+    $|A|>|B|$ therefore a function $f : A \to B$ must map at least 2 values in $A$ to the same $B$ value.
+  \end{ex}
 
+  \section{Fibonacci series and recursion}
+  \[|A| = \text{cardinality of set } A = \#\{a|a \in A\}\]
+  \subsection{Recurrence relation}
+  \[f_n = f_{n-1} + f_{n-2}\]
+  \[
+    \begin{pmatrix}
+      f_n \\
+      f_{n-1}
+    \end{pmatrix} = \begin{pmatrix}
+    1 & 1 \\
+    1 & 0 \\
+    \end{pmatrix} \begin{pmatrix}
+    f_{n-1} \\
+    f_{n-2}
+    \end{pmatrix}
+  \]
+  \subsection{Inductive proofs and recursion}
+  $\forall n : P(n)$
+  \begin{enumerate}
+    \item \textbf{Base Case:} First, prove $P(1)$ is true
+    \item \textbf{Induction Step} \\
+      Assume $P(0), P(1), ..., P(n)$ are all true (Induction hypothesis)\\
+      Use the assumption above to prove $P(n+1)$\\
+      If $P(n+1) = True$, proven
+  \end{enumerate}
+
+  \begin{ex}
+    \textbf{Prove that the sum of all natural numbers adds up to $\frac{n(n+1)}{2}$ using a proof by induction.}\\
+    So we need to prove $0+1+2+...+n=\frac{n(n+1)}{2}$. Base case proof:
+    \[Let\ n = 1 \therefore 0+1 = \frac{1(2)}{2} = 1 \therefore \text{works for }n=1\]
+    Now, we assume $n=k$ holds (Induction Hypothesis):
+    \[1+2+...+k=\frac{k(k+1)}{2}\]
+    And we need to show $n=k+1$ works:
+    \[1+2+...+k+(k+1) = (1+2+...+k)+(k+1) = \frac{k(k+1)}{2}+(k+1)\]
+    \[=\frac{k(k+1) + 2(k+1)}{2} = \frac{k^2+3k+1}{2} = \frac{(k+1)(k+2)}{2} \qed\]
+  \end{ex}
+
+  \subsubsection{Base Case}
+  This case proves that the property holds for the first item. It doesn't have to begin with $n=0$, it often starts with $n=1$ but it can start with any number within the given set.
+  \subsection{Fibonacci Q-Matrix}
+  The $Q$ matrix is defined by:
+  
+  \[Q = Q^1 = \begin{bmatrix}
+    1 & 1 \\
+    1 & 0
+  \end{bmatrix}
+  \]
+
+The $n^{th}$ value is given by:\[
+Q^n = \begin{bmatrix}
+  F_{n+1} & F_n \\
+  F_n & F_{n-1} \\
+\end{bmatrix}
+  \]
 
 \end{document}
 
