@@ -10,7 +10,7 @@ This repository contains my notes, labs and coursework.
 - [COMP1215 - Logic](./notes/latex/output/comp1215-logic.pdf)
 - [COMP1215 - Linear Algebra](./notes/latex/output/comp1215-linear-algebra.pdf)
 - [COMP1215 - Combinatorics](./notes/latex/output/comp1215-combinatorics.pdf)
-
+* [COMP1203 - Networking](./notes/md/comp1203-networking.pdf)
 ## Scripts
 
 ### Installation
