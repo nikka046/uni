@@ -1,4 +1,6 @@
 // Animal class
+// abstract so animal class cannot be created
+// animals have to be created through classes like Wolf or Parrot
 public abstract class Animal {
   private String name; // animal's name
   private int age; // age of the animal
@@ -13,14 +15,15 @@ public abstract class Animal {
   public String getName() {
     return name;
   }
+
   // age getter
   public int getAge() {
     return age;
   }
-  
+
   // abstract makeNoise method to be implemented by subclasses
   public abstract void makeNoise();
 
-  // eat method
-  abstract void eat(Food food) throws Exception;
+  // eat method, throws an exception if food isn't edible by the animal type
+  public abstract void eat(Food food) throws Exception;
 }

@@ -1,10 +1,11 @@
-// Herbivore class
+// Herbivore class, Herbivores are Animals too
 abstract class Herbivore extends Animal {
-  // Herbivore constructor
+  // Herbivore constructor that takes the name and age and passes it to the Animal
+  // class
   public Herbivore(String name, Integer age) {
     super(name, age);
   }
-  
+
   // implements the eat method and prints out the name of the food its eating
   public void eat(Food food) throws Exception {
     // if food is meat, throw an exception

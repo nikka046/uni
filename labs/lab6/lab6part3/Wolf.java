@@ -1,4 +1,4 @@
-// Wolf class
+// Wolf class, a wolf is a carnivore
 public class Wolf extends Carnivore {
 
   // Wolf constructor, taking its name and age
@@ -8,6 +8,6 @@ public class Wolf extends Carnivore {
 
   // makes noise to standard output
   public void makeNoise() {
-    System.out.println("woof"); 
+    System.out.println("woof");
   }
 }

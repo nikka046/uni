@@ -1,4 +1,4 @@
-// Meat class
+// Meat class, any meat is also a Food class
 public class Meat extends Food {
   // Meat constructor
   public Meat(String name) {
