@@ -25,7 +25,9 @@ This repository contains my notes, labs and coursework.
 
 ### Lab Prep
 
+ * [COMP1203 - Lab 1 Prep](./notes/md/comp1203-lab1prep.pdf)
  * [COMP1203 - Lab 2 Prep](./notes/md/comp1203-lab2prep.pdf)
+ * [COMP1203 - Lab 3 Prep](./notes/md/comp1203-lab3prep.pdf)
 
 ## Scripts
 
