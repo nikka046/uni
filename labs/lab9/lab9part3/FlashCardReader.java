@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 class FlashCardReader {
   private BufferedReader reader; // declared buffered reader to read the file later
@@ -18,11 +19,25 @@ class FlashCardReader {
   public String getLine() {
     try {
       return reader.readLine();
-    } catch(IOException err) {
+    } catch (IOException e) {
       return null;
     }
   }
 
+  public ArrayList<FlashCard> getFlashCards() {
+    // create the arraylist
+    ArrayList<FlashCard> flashCards = new ArrayList<FlashCard>();
+    // initialise current line variable
+    String currentLine;
+    while ((currentLine = getLine()) != null) {
+      // split the line by ":" to get the question and answer
+      String[] parts = currentLine.split(":");
+      flashCards.add(new FlashCard(parts[0], parts[1]));
+    }
+    return flashCards;
+  }
+
+  // returhs true if no errors and file is ready to read
   public boolean fileIsReady() {
     try {
       return reader.ready();

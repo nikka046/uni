@@ -10,6 +10,8 @@ class Quiz {
     FlashCardReader reader = new FlashCardReader(filename);
     // get flash card from the file
     flashCards = reader.getFlashCards();
+
+    play();
   }
 
   // play method used by the user to start the game
@@ -22,9 +24,11 @@ class Quiz {
       System.out.println(flashCard.getQuestion());
       // obtain user's answer
       String answer = toolbox.readStringFromCmd();
+      // if answer is correct
       if (answer.equals(flashCard.getAnswer())) {
         System.out.println("right");
       } else {
+        // if answer is incorrect
         System.out.println("Wrong, the correct answer is: " + flashCard.getAnswer());
       }
     }
