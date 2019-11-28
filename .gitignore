@@ -1,4 +1,5 @@
 *.fls
+*.vim
 *.log
 *.out
 *.syntax.gz
