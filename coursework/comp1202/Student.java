@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 class Student extends Person {
   private ArrayList<Integer> certificates; // list of subject IDs that the student has obtained
+  private Course course; // stores the current course student is enrolled at
   
   // Student constructor
   public Student(String name, char gender, Integer age) {
@@ -22,5 +23,20 @@ class Student extends Person {
   // checks if given student has completed a given subject
   public boolean hasCertificate(Subject subject) {
     return certificates.contains(subject.getID());
+  }
+
+  // enrols a student in a course
+  public void enrol(Course course) {
+    this.course = course;
+  }
+
+  // release / un enrol from a course
+  public void unassignCourse() {
+    course = null;
+  }
+
+  // return true if student not enrolled in a course
+  public Boolean isFree() {
+    return course == null;
   }
 }

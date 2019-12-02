@@ -54,6 +54,9 @@ class Course {
   }
 
   private void releaseStudentsAndInstructor() {
+    for (Student student: students) {
+      if (student != null) student.unassignCourse();
+    }
     // remove graduates from students array
     students = new Student[getSize()];
     // unassign instructor
@@ -87,11 +90,12 @@ class Course {
   }
 
   // enrols a student
-  public boolean enrolStudent(Student student) {
+  public Boolean enrolStudent(Student student) {
     Integer size = getSize();
     // size cannot exceed 3 and course cannot be already started
     if (size < 3 && daysUntilStarts > 0) {
       students[size] = student;
+      student.enrol(this);
       return true;
     }
     return false;
