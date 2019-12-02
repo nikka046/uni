@@ -5,12 +5,31 @@ class Course {
   private Integer daysUntilStarts; // number of days until the course starts
   private Integer daysToRun; // number of remaining days the course still has to run
   private Student[] students = new Student[3]; // list of students that are enrolled in the course
+  private Instructor instructor; // current course instructor
+  private Boolean cancelled = false; // defines whether course has been cancelled
   
   // Course constructor
   public Course(Subject subject, Integer daysUntilStarts) {
     this.subject = subject;
     this.daysUntilStarts = daysUntilStarts;
     this.daysToRun = subject.getDuration();
+  }
+
+  // instructor setter
+  // returns true if instructor changed
+  public Boolean setInstructor(Instructor instructor) {
+    // check if instructor can teach the subject
+    if (instructor.canTeach(subject)) {
+      instructor.assignCourse(this);
+      this.instructor = instructor;
+      return true;
+    }
+    return false;
+  }
+
+  // returns true if instrutor already set
+  public Boolean hasInstructor() {
+    return instructor != null;
   }
 
   // subject getter
@@ -29,12 +48,32 @@ class Course {
     return daysToRun;
   }
 
+  // cancelled getter
+  public Boolean isCancelled() {
+    return cancelled;
+  }
+
+  private void releaseStudentsAndInstructor() {
+    // remove graduates from students array
+    students = new Student[getSize()];
+    // unassign instructor
+    if (hasInstructor()) {
+      instructor.unassignCourse();
+      instructor = null;
+    }
+  }
+
   // simulates a passing day
   public void aDayPasses() {
-    // if the course hasnt started yet, it becomes a day closer to starting
-    if (daysUntilStarts > 0) {
+    // cancel the course if instructor not present at the start or no students
+    if (daysUntilStarts == 1 && (!hasInstructor() || getSize() == 0)) {
+      cancelled = true;
+      releaseStudentsAndInstructor();
+    } else if (daysUntilStarts > 0) { // if the course hasnt started yet, it becomes a day closer to starting
       daysUntilStarts--;
-    } else if (daysToRun > 0) { // if the course started and a day passes, decrement the days of the course remaining, given that it hasn't finished
+    } else if (daysToRun > 0) {
+      // if the course started and a day passes, decrement the days of the course remaining,
+      // given that it hasn't finished
       daysToRun--;
       // if course has finished
       if (daysToRun == 0) {
@@ -42,8 +81,7 @@ class Course {
         for (int i = 0; i < getSize(); i++) {
           students[i].graduate(subject);
         }
-        // remove graduates from students array
-        students = new Student[getSize()];
+        releaseStudentsAndInstructor();
       }
     }
   }
