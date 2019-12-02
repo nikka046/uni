@@ -6,11 +6,10 @@ class Subject {
   private String description; // description of the subject
   
   // Subject constructor
-  public Subject(Integer id, Integer specialism, Integer duration, String description) {
+  public Subject(Integer id, Integer specialism, Integer duration) {
     this.id = id;
     this.specialism = specialism;
     this.duration = duration;
-    this.description = description;
   }
 
   // id getter
