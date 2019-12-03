@@ -21,4 +21,9 @@ abstract class Instructor extends Person {
   }
 
   abstract boolean canTeach(Subject subject);
+
+  @Override
+  public String toString() {
+    return String.format("%s - assigned course: %s", getName(), assignedCourse == null ? "-" : assignedCourse.getSubject().getID().toString());
+  }
 }

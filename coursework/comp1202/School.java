@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 class School {
   private String name; // School's name
@@ -10,6 +11,10 @@ class School {
   // School constructor
   public School(String name) {
     this.name = name;
+    subjects = new ArrayList<Subject>();
+    courses = new ArrayList<Course>();
+    instructors = new ArrayList<Instructor>();
+    students = new ArrayList<Student>();
   }
 
   // adds a subject to the school
@@ -110,7 +115,9 @@ class School {
       }
     }
 
-    for (Course course: courses) {
+    Iterator<Course> iterator = courses.iterator();
+    while (iterator.hasNext()) {
+      Course course = iterator.next();
       // find each course that requires an instructor
       if (!course.hasInstructor()) {
         for (Instructor instructor: instructors) {
@@ -125,7 +132,7 @@ class School {
       course.aDayPasses();
       // remove cancelled or already finished courses
       if (course.isCancelled() || course.getStatus() == 0) {
-        remove(course);
+        iterator.remove();
       }
     }
   }

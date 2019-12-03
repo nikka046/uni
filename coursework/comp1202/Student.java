@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 class Student extends Person {
   private ArrayList<Integer> certificates; // list of subject IDs that the student has obtained
@@ -38,5 +39,15 @@ class Student extends Person {
   // return true if student not enrolled in a course
   public Boolean isFree() {
     return course == null;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s - certificates: [%s]%s",
+        getName(),
+        certificates.stream().map(Object::toString).collect(Collectors.joining(", ")),
+        course == null ? "" : ", course: "+course.getSubject().getID().toString()
+    );
   }
 }

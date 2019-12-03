@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 class Course {
   private Subject subject; // subject associated with the course
@@ -117,5 +118,15 @@ class Course {
   // returns list of students
   public Student[] getStudents() {
     return Arrays.copyOfRange(students, 0, getSize());
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "%s(%s):\t[%s]",
+        subject.getID().toString(),
+        getStatus(),
+        Arrays.stream(getStudents()).map((s) -> s.getName()).collect(Collectors.joining(","))
+    );
   }
 }
