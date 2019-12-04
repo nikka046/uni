@@ -73,7 +73,7 @@ class Course {
     if (daysUntilStarts == 1 && (!hasInstructor() || getSize() == 0)) {
       cancelled = true;
       releaseStudentsAndInstructor();
-    } else if (daysUntilStarts > 0) { // if the course hasnt started yet, it becomes a day closer to starting
+    } if (daysUntilStarts > 0) { // if the course hasnt started yet, it becomes a day closer to starting
       daysUntilStarts--;
     } else if (daysToRun > 0) {
       // if the course started and a day passes, decrement the days of the course remaining,
