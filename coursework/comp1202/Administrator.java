@@ -75,9 +75,9 @@ class Administrator {
       school.add(new Teacher(randomName(), randomGender(), randomAge()));
     if (getProbability(10))
       school.add(new Demonstrator(randomName(), randomGender(), randomAge()));
-    if (getProbability(20))
+    if (getProbability(5))
       school.add(new OOTrainer(randomName(), randomGender(), randomAge()));
-    if (getProbability(20))
+    if (getProbability(5))
       school.add(new GUITrainer(randomName(), randomGender(), randomAge()));
 
     // run the school
