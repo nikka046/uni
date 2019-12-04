@@ -1,7 +1,12 @@
-#!/bin/fish
+#!/bin/bash
 
-if  [ $argv[1] = "notes" ]
-	firefox "secure.ecs.soton.ac.uk/notes/$argv[2]" &
+WD="$(pwd)"
+SCRIPT=`realpath $0`
+
+if [ "$1" = "test" ] ; then
+  echo $WD
+  javac -cp .:$SCRIPT/junit.jar $2
+  # java -jar junit.jar -cp . -c $2
 else
-	echo "operation '$argv[1]' not found"
-end
+  echo "command '$1' not found"
+fi

@@ -29,6 +29,11 @@ This repository contains my notes, labs and coursework.
  * [COMP1203 - Lab 2 Prep](./notes/md/comp1203-lab2prep.pdf)
  * [COMP1203 - Lab 3 Prep](./notes/md/comp1203-lab3prep.pdf)
 
+### Coursework
+ 
+ * [COMP1202 - Java Programming Coursework](./coursework/comp1202)
+ * [COMP1205 - Technical Report](./notes/md/comp1205-report.pdf)
+
 ## Scripts
 
 ### Installation
