@@ -1,0 +1,4 @@
+#!/bin/bash
+
+javac -cp .:junit.jar "$1.java"
+java -jar junit.jar -cp . -c $1
