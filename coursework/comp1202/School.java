@@ -17,6 +17,11 @@ class School {
     students = new ArrayList<Student>();
   }
 
+  // name setter
+  public void setName(String name) {
+    this.name = name;
+  }
+
   // adds a subject to the school
   public void add(Subject subject) {
     subjects.add(subject);
