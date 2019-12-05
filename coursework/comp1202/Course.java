@@ -91,10 +91,11 @@ class Course {
   }
 
   // enrols a student
+  // returns true if student enrolled, false if could not be enrolled
   public Boolean enrolStudent(Student student) {
     Integer size = getSize();
     // size cannot exceed 3 and course cannot be already started
-    if (size < 3 && daysUntilStarts > 0) {
+    if (size < 3 && daysUntilStarts > 0 && subject.hasAllPrerequisites(student)) {
       students[size] = student;
       student.enrol(this);
       return true;

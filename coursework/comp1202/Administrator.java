@@ -26,30 +26,18 @@ class Administrator {
     school = new School("Simulated School");
 
     Subject basics = new Subject(1, 1, 5);
-    Subject lab1 = new Subject(2, 2, 2);
-    Subject arrays = new Subject(3, 1, 3);
-    Subject algorithms = new Subject(4, 1, 1);
-    Subject testing = new Subject(5, 1, 3);
-//    Subject lab2 = new Subject(6, 2, 2);
-//    Subject oo1 = new Subject(7, 3, 6);
-//    Subject oo2 = new Subject(8, 3, 7);
-//    Subject lab3 = new Subject(9, 2, 3);
-//    Subject graphics = new Subject(10, 4, 5);
-//    Subject controllers = new Subject(11, 4, 2);
-//    Subject lab4 = new Subject(12, 2, 3);
+    Subject lab1 = new Subject(2, 2, 2, basics);
+    Subject arrays = new Subject(3, 1, 3, basics);
+    Subject algorithms = new Subject(4, 1, 1, basics, arrays);
+    Subject testing = new Subject(5, 1, 3, basics);
+    Subject lab2 = new Subject(6, 2, 2, basics, lab1, algorithms, testing);
     
     school.add(basics);
     school.add(lab1);
     school.add(arrays);
     school.add(algorithms);
     school.add(testing);
-//    school.add(lab2);
-//    school.add(oo1);
-//    school.add(oo2);
-//    school.add(lab3);
-//    school.add(graphics);
-//    school.add(controllers);
-//    school.add(lab4);
+    school.add(lab2);
 
     school.add(new Course(basics, 0));
     school.add(new Course(basics, 20));
