@@ -1,13 +1,11 @@
 school:ECS Java Training School
-subject:Basics,1,1,5
-subject:Lab 1,2,2,2
-subject:Arrays,3,1,4
 student:Peter,M,60
 student:John,M,22
-student:Annabelle,F,31
 student:Maggie,F,58
 student:Alex,M,23
-Teacher:Yvonne,F,55
-Demonstrator:Beth,F,45
-OOTrainer:Chris,M,62
-GUITrainer:Sarah,F,48
+student:e34cba77,F,38
+student:508cb150,M,38
+student:15d0b3d7,F,53
+student:765b1e28,F,26
+student:2e01c685,F,51
+student:a4965713,M,33

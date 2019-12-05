@@ -1,12 +1,34 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 // class useed to read simulation config file
 // returns true if successfull
 // returns false if there was an error parsing
 class SimulationConfig {
+
+  public static Boolean saveFile(String filename, School school) {
+    try {
+      File file = new File(filename);
+      BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+
+      writer.write("school:"+school.getName());
+      writer.newLine();
+
+      for (Student s: school.getStudents()) {
+        writer.write("student:"+s.toLine());
+        writer.newLine();
+      }
+      writer.close();
+      return true;
+    } catch (IOException e) {
+      return false;
+    }
+  }
+
   // reads the file located in the "filename"
   // can either take a relative filename or absolute path to file
   // appends changes to school parameter

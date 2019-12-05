@@ -1,4 +1,4 @@
-class Person {
+class Person implements Savable {
   private String name; // name of the person
   private char gender; // gender, either M (male) or F (female)
   private Integer age; // age of the person, in years
@@ -28,5 +28,10 @@ class Person {
   // age setter
   public void setAge(Integer value) {
     age = value;
+  }
+
+  @Override
+  public String toLine() {
+    return String.format("%s,%c,%d", name, gender, age);
   }
 }

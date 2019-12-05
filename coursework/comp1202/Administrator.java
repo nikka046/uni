@@ -4,6 +4,7 @@ import java.util.UUID;
 class Administrator {
   private School school; // school that will be simulated
   private static Toolbox toolbox = new Toolbox(); // toolbox used to get random integer
+  private String configFile; // store the config file path to save it later
 
   public static void main(String[] args) {
     // initialise administrator class
@@ -15,11 +16,13 @@ class Administrator {
       admin.run(Integer.parseInt(args[1]));
     } catch(Exception e) {
     }
+    admin.save();
   }
 
   // constructor that takes a path to the config file
   // initialises the school as well as subjects, courses, students, and instructors
   public Administrator(String configFile) {
+    this.configFile = configFile;
     school = new School("Simulated School");
 
     Subject basics = new Subject(1, 1, 5);
@@ -58,6 +61,11 @@ class Administrator {
     Boolean success = SimulationConfig.readFile(configFile, school);
 
     System.out.println(success ? "y" : "n");
+  }
+
+  // saves the config
+  public void save() {
+    SimulationConfig.saveFile(configFile, school);
   }
 
   // runs the simulation for 1 day

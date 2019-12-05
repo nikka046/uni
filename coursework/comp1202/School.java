@@ -21,6 +21,10 @@ class School {
   public void setName(String name) {
     this.name = name;
   }
+  // name getter
+  public String getName() {
+    return name;
+  }
 
   // adds a subject to the school
   public void add(Subject subject) {
